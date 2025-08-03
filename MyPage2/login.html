@@ -1,0 +1,30 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" /><br>
+    <input type="password" id="password" placeholder="Password" /><br>
+    <button onclick="login()">Login</button>
+
+    <script>
+        function login() {
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (storedUser && email === storedUser.email && password === storedUser.password) {
+                localStorage.setItem("loggedIn", "true");
+                alert("Login successful!");
+                window.location.href = "dashbord.html";
+            } else {
+                alert("Invalid credentials");
+            }
+        }
+    </script>
+</body>
+</html>

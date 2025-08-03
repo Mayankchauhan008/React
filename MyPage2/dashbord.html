@@ -1,0 +1,30 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 id="welcome"></h2>
+    <button onclick="changePassword()">Change Password</button>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        window.onload = function () {
+            const user = JSON.parse(localStorage.getItem("user"));
+            document.getElementById("welcome").innerText = `Hi, ${user.name}`;
+        };
+
+        function changePassword() {
+            window.location.href = "change_password.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            alert("Logged out");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
